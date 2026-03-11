@@ -1,0 +1,327 @@
+#include <Keypad.h>
+
+const byte cols = 4;
+const byte rows = 4;
+
+char keys[rows][cols] = {
+  {'1','2','3','A'},
+  {'4','5','6','B'},
+  {'7','8','9','C'},
+  {'*','0','#','D'},
+};
+
+byte colspins[cols] = {6,7,8,9};
+byte rowspins[rows] = {5,4,3,2};
+
+Keypad kpd = Keypad(makeKeymap(keys), rowspins, colspins, rows, cols);
+
+int A = A0;
+int B = A1;
+int C = 11;
+int D = 12;
+int E = 13;
+int F = A2;
+int G = A3;
+int DP = 10;
+
+void one()
+{
+  // active low pins
+  digitalWrite(A,HIGH);
+  digitalWrite(B,LOW);
+  digitalWrite(C,LOW);
+  digitalWrite(D,HIGH);
+  digitalWrite(E,HIGH);
+  digitalWrite(F,HIGH);
+  digitalWrite(G,HIGH);
+  digitalWrite(DP,HIGH);
+  return;
+}
+
+void two()
+{
+  digitalWrite(A,LOW);
+  digitalWrite(B,LOW);
+  digitalWrite(C,HIGH);
+  digitalWrite(D,LOW);
+  digitalWrite(E,LOW);
+  digitalWrite(F,HIGH);
+  digitalWrite(G,LOW);
+  digitalWrite(DP,HIGH);
+  return;
+}
+
+void three()
+{
+  digitalWrite(A,LOW);
+  digitalWrite(B,LOW);
+  digitalWrite(C,LOW);
+  digitalWrite(D,LOW);
+  digitalWrite(E,HIGH);
+  digitalWrite(F,HIGH);
+  digitalWrite(G,LOW);
+  digitalWrite(DP,HIGH);
+  return;
+}
+
+void four()
+{
+  digitalWrite(A,HIGH);
+  digitalWrite(B,LOW);
+  digitalWrite(C,LOW);
+  digitalWrite(D,HIGH);
+  digitalWrite(E,HIGH);
+  digitalWrite(F,LOW);
+  digitalWrite(G,LOW);
+  digitalWrite(DP,HIGH);
+  return;
+}
+
+void five()
+{
+  digitalWrite(A,LOW);
+  digitalWrite(B,HIGH);
+  digitalWrite(C,LOW);
+  digitalWrite(D,LOW);
+  digitalWrite(E,HIGH);
+  digitalWrite(F,LOW);
+  digitalWrite(G,LOW);
+  digitalWrite(DP,HIGH);
+  return;
+}
+
+void six()
+{
+  digitalWrite(A,LOW);
+  digitalWrite(B,HIGH);
+  digitalWrite(C,LOW);
+  digitalWrite(D,LOW);
+  digitalWrite(E,LOW);
+  digitalWrite(F,LOW);
+  digitalWrite(G,LOW);
+  digitalWrite(DP,HIGH);
+  return;
+}
+
+void seven()
+{
+  digitalWrite(A,LOW);
+  digitalWrite(B,LOW);
+  digitalWrite(C,LOW);
+  digitalWrite(D,HIGH);
+  digitalWrite(E,HIGH);
+  digitalWrite(F,HIGH);
+  digitalWrite(G,HIGH);
+  digitalWrite(DP,HIGH);
+  return;
+}
+
+void eight()
+{
+  digitalWrite(A,LOW);
+  digitalWrite(B,LOW);
+  digitalWrite(C,LOW);
+  digitalWrite(D,LOW);
+  digitalWrite(E,LOW);
+  digitalWrite(F,LOW);
+  digitalWrite(G,LOW);
+  digitalWrite(DP,LOW);
+  return;
+}
+
+void nine()
+{
+  digitalWrite(A,LOW);
+  digitalWrite(B,LOW);
+  digitalWrite(C,LOW);
+  digitalWrite(D,HIGH);
+  digitalWrite(E,HIGH);
+  digitalWrite(F,LOW);
+  digitalWrite(G,LOW);
+  digitalWrite(DP,HIGH);
+  return;
+}
+
+void zero()
+{
+  digitalWrite(A,LOW);
+  digitalWrite(B,LOW);
+  digitalWrite(C,LOW);
+  digitalWrite(D,LOW);
+  digitalWrite(E,LOW);
+  digitalWrite(F,LOW);
+  digitalWrite(G,HIGH);
+  digitalWrite(DP,HIGH);
+  return;
+}
+
+void H()
+{
+  digitalWrite(A,HIGH);
+  digitalWrite(B,LOW);
+  digitalWrite(C,LOW);
+  digitalWrite(D,HIGH);
+  digitalWrite(E,LOW);
+  digitalWrite(F,LOW);
+  digitalWrite(G,LOW);
+  digitalWrite(DP,HIGH);
+}
+
+void SHARTA()
+{
+  digitalWrite(A,HIGH);
+  digitalWrite(B,HIGH);
+  digitalWrite(C,HIGH);
+  digitalWrite(D,HIGH);
+  digitalWrite(E,HIGH);
+  digitalWrite(F,HIGH);
+  digitalWrite(G,LOW);
+  digitalWrite(DP,HIGH);
+  return;
+}
+
+void d()
+{
+  digitalWrite(A,HIGH);
+  digitalWrite(B,LOW);
+  digitalWrite(C,LOW);
+  digitalWrite(D,LOW);
+  digitalWrite(E,LOW);
+  digitalWrite(F,HIGH);
+  digitalWrite(G,LOW);
+  digitalWrite(DP,HIGH);
+  return;
+}
+
+void b()
+{
+  digitalWrite(A,HIGH);
+  digitalWrite(B,HIGH);
+  digitalWrite(C,LOW);
+  digitalWrite(D,LOW);
+  digitalWrite(E,LOW);
+  digitalWrite(F,LOW);
+  digitalWrite(G,LOW);
+  digitalWrite(DP,HIGH);
+  return;
+}
+
+void a()
+{
+  digitalWrite(A,LOW);
+  digitalWrite(B,LOW);
+  digitalWrite(C,LOW);
+  digitalWrite(D,HIGH);
+  digitalWrite(E,LOW);
+  digitalWrite(F,LOW);
+  digitalWrite(G,LOW);
+  digitalWrite(DP,HIGH);
+  return;
+}
+
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(A, OUTPUT);
+  pinMode(B, OUTPUT);
+  pinMode(C, OUTPUT);
+  pinMode(D, OUTPUT);
+  pinMode(E, OUTPUT);
+  pinMode(F, OUTPUT);
+  pinMode(G, OUTPUT);
+  pinMode(DP, OUTPUT);
+}
+
+void loop()
+{
+  char key = '\0';
+
+label:
+  key = kpd.getKey();
+  Serial.println(key);
+
+  if(key=='1')
+  {
+    one();
+    goto label;
+  }
+  else if(key=='2')
+  {
+    two();
+    goto label;
+  }
+
+  if(key=='3')
+  {
+    three();
+    goto label;
+  }
+  else if(key=='4')
+  {
+    four();
+    goto label;
+  }
+  else if(key=='5')
+  {
+    five();
+    goto label;
+  }
+  if(key=='6')
+  {
+    six();
+    goto label;
+  }
+  else if(key=='7')
+  {
+    seven();
+    goto label;
+  }
+  else if(key=='8')
+  {
+    eight();
+    goto label;
+  }
+  else if(key=='9')
+  {
+    nine();
+    goto label;
+  }
+  else if(key=='0')
+  {
+    zero();
+    goto label;
+  }
+  else
+  {
+    Serial.println(" ");
+  }
+
+  if(key=='#')
+  {
+    H();
+    goto label;
+  }
+  else if(key=='*')
+  {
+    SHARTA();
+    goto label;
+  }
+
+  if(key=='D')
+  {
+    d();
+    goto label;
+  }
+
+  if(key=='B')
+  {
+    b();
+    goto label;
+  }
+
+  if(key=='A')
+  {
+    a();
+    goto label;
+  }
+}
